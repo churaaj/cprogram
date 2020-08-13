@@ -4,7 +4,13 @@ int main() {
     char str[] = "my_name_is_edcast_future_skills";
     int i = 0;
     int counter = 0;
-   
+    
+    //GETTING A STRING INPUT FROM USER
+    char input[100];
+    scanf("%[^\n]%*c",input);
+    printf("%s\n",input);
+    
+    
     for(i=0;str[i]!='\0';i++){
         int next = i + 1;
         if(str[next] =='\0')
