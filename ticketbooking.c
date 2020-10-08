@@ -191,6 +191,27 @@ void show_details(int x, struct user person[]){
 	printf("\n");
 }
 
+// cancel the seat
+
+int cancel(int x, struct user person[] ){
+	if(person[x].ticket == 0){
+		return 0;
+	}	
+	else{
+		if(person[x].movie == 1){
+			a[person[x].ticket] = person[x].ticket;
+			person[x].ticket = 0;
+			person[x].movie = 0;
+		}
+		else if(person[x].movie == 2){
+			b[person[x].ticket] = person[x].ticket;
+			person[x].ticket = 0;
+			person[x].movie = 0;
+		}
+		return 1;
+	}
+}
+
 //getting the input what to do
 
 int num(void)
@@ -202,7 +223,8 @@ int num(void)
 	printf("||             2- Signin          							      ||\n");
 	printf("||             3- Book ticket:                              	  ||\n");
 	printf("||             4- show details                                    ||\n");
-	printf("||             5- Exit system:                                    ||\n");
+	printf("||             5- Cancel seat                                     ||\n");
+	printf("||             6- Exit system:                                    ||\n");
 	printf("||================================================================||\n");
 	printf("  Enter your choice: ");
 	scanf("%d",&choice);
@@ -226,8 +248,8 @@ int main(){
 	}
 	int number = num();
 	int x = -1;
-	int q;
-	while(number != 5){
+	int q,w;
+	while(number != 6){
 		switch(number){
 			case 1:
 				x = Login(person);
@@ -250,6 +272,16 @@ int main(){
 				 else{
 				 	show_details(x,person);
 				 }
+				 break;
+			case 5:
+				w = cancel(x, person);
+				if (w == 1){
+					printf("\n The ticket has been cancelled successfully");
+				}
+				else{
+					printf("\n You have not booked a ticket");
+				}
+				break;
 		}
 		
 		number = num();
